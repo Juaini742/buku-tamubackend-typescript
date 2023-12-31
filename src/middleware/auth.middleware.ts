@@ -21,7 +21,7 @@ export const validateToken = async (
     }
 
     const decodedToken = jwt.verify(tokenValue, secretKey, {
-      expiresIn: "1h",
+      expiresIn: "24h",
     });
 
     if (decodedToken.exp <= Date.now() / 1000) {

@@ -52,13 +52,14 @@ export const getUserByToken = async (
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const {username, email, password} = req.body;
+    const {username, email, role, password} = req.body;
     const newPassword: string = await passwordHashing(password);
 
     const user = await User.create({
       id: crypto.randomUUID(),
       username,
       email,
+      role,
       password: newPassword,
     });
 
@@ -78,10 +79,16 @@ export const register = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
-    const {email, password} = req.body;
+    const {email, role, password} = req.body;
     const user = await User.findOne({where: {email}});
+    const userRole = await User.findOne({where: {role}});
 
     if (!user) {
+      res.status(403).json({message: "User not found"});
+      return;
+    }
+
+    if (!userRole) {
       res.status(403).json({message: "User not found"});
       return;
     }
@@ -110,8 +117,8 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
     res
       .status(200)
-      .header("refreshToken", `Bearer ${token}`)
-      .json({message: "Login Successfully", token});
+      // .header("refreshToken", `Bearer ${token}`)
+      .json({message: "Login Successfully", role: user.role, token: token});
   } catch (error) {
     res
       .status(500)

@@ -13,6 +13,7 @@
     "@types/cors": "latest",
     "@types/express": "latest",
     "@types/node": "^20.10.5",
+    "@types/pdfkit": "^0.13.3",
     "@types/sequelize": "^4.28.19",
     "nodemon": "latest",
     "sequelize-cli": "^6.6.2",
@@ -31,8 +32,10 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.6.5",
+    "pdfkit": "^0.14.0",
     "sequelize": "^6.35.2",
     "sequelize-typescript": "^2.1.6",
+    "socket.io": "^4.7.2",
     "ts-node": "latest"
   },
   "devDependencies.@types/dotenv": "latest"

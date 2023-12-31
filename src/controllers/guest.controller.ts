@@ -10,7 +10,7 @@ export const getAllGuets = async (
 ): Promise<void> => {
   try {
     const guests = await Guest.findAll();
-    res.status(200).json({guests});
+    res.status(200).json(guests);
   } catch (error) {
     res
       .status(500)
@@ -74,7 +74,7 @@ export const addGuest = async (req: Request, res: Response): Promise<void> => {
       file: photoUrl,
     });
 
-    res.status(200).json({guest});
+    res.status(200).json(guest);
   } catch (error) {
     res
       .status(500)
@@ -98,7 +98,7 @@ export const getGuestByUserId = async (
       return;
     }
 
-    res.status(200).json({guest});
+    res.status(200).json(guest);
   } catch (error) {
     res
       .status(500)

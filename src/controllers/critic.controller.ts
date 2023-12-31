@@ -10,7 +10,7 @@ export const getAllCritic = async (
   try {
     const dates = await Critic.findAll();
 
-    res.status(200).json({dates});
+    res.status(200).json(dates);
   } catch (error) {
     res
       .status(500)
@@ -33,7 +33,7 @@ export const getCriticByUserId = async (
       res.status(404).json({message: "User not found"});
       return;
     }
-    res.status(200).json({dates});
+    res.status(200).json(dates);
   } catch (error) {
     res
       .status(500)
